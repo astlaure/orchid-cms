@@ -7,6 +7,7 @@ import (
 	"github.com/astlaure/orchid-cms/internal/users"
 	_ "github.com/joho/godotenv/autoload"
 	"github.com/labstack/echo/v4"
+	"github.com/labstack/echo/v4/middleware"
 )
 
 func main() {
@@ -14,7 +15,10 @@ func main() {
 
 	app.Debug = core.GetDebugConfig()
 	app.Renderer = core.GetRenderer()
+	app.Validator = core.GetValidator()
 	app.Static("/", "public")
+
+	app.Pre(middleware.AddTrailingSlash())
 
 	core.ConnectToDatabase()
 

@@ -51,6 +51,13 @@ func RegisterGroup(prefix string, app *echo.Echo) {
 			return c.NoContent(http.StatusBadRequest)
 		}
 
+		err = c.Validate(&createUser)
+
+		if err != nil {
+			// return echo.NewHTTPError(http.StatusBadRequest, err.Error())
+			return c.JSON(http.StatusBadRequest, err.Error())
+		}
+
 		user, err := insertUser(createUser)
 
 		if err != nil {

@@ -1,4 +1,4 @@
-GET http://localhost:3000/api/users/?page=0
+GET http://localhost:3000/api/users
 Content-Type: application/json
 
 ###
@@ -8,6 +8,18 @@ Content-Type: application/json
 
 {
     "name": "Bob The Builder",
+    "email": "bob@builder.com",
+    "password": "password",
+    "passwordConfirmation": "password",
+    "role": "USER_ROLE"
+}
+
+###
+
+POST http://localhost:3000/api/users
+Content-Type: application/json
+
+{
     "email": "bob@builder.com",
     "password": "password",
     "passwordConfirmation": "password",

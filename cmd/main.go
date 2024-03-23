@@ -1,9 +1,9 @@
 package main
 
 import (
-	"net/http"
 	"os"
 
+	"github.com/astlaure/orchid-cms/internal/admin"
 	"github.com/astlaure/orchid-cms/internal/auth"
 	"github.com/astlaure/orchid-cms/internal/core"
 	"github.com/astlaure/orchid-cms/internal/users"
@@ -22,19 +22,14 @@ func main() {
 	app.Validator = core.GetValidator()
 	app.Static("/", "public")
 
-	app.Pre(middleware.AddTrailingSlash())
+	app.Pre(middleware.RemoveTrailingSlash())
 	app.Use(session.Middleware(sessions.NewCookieStore([]byte(os.Getenv("SESSION_KEY")))))
 
 	core.ConnectToDatabase()
 
 	auth.RegisterGroup("/api/auth", app)
 	users.RegisterGroup("/api/users", app)
-
-	app.GET("/", func(c echo.Context) error {
-		return c.Render(http.StatusOK, "index.html", &echo.Map{
-			"Title": "Hello World",
-		})
-	})
+	admin.RegisterGroup("", app)
 
 	app.Logger.Fatal(app.Start("127.0.0.1:3000"))
 }

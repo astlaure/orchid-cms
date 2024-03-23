@@ -11,7 +11,7 @@ import (
 func RegisterGroup(prefix string, app *echo.Echo) {
 	var group = app.Group(prefix, core.AuthGuard)
 
-	group.GET("/", func(c echo.Context) error {
+	group.GET("", func(c echo.Context) error {
 		pageNumber, err := strconv.ParseUint(c.QueryParam("page"), 10, 32)
 
 		if err != nil {
@@ -43,7 +43,7 @@ func RegisterGroup(prefix string, app *echo.Echo) {
 		return c.JSON(http.StatusOK, user)
 	})
 
-	group.POST("/", func(c echo.Context) error {
+	group.POST("", func(c echo.Context) error {
 		var createUser CreateUser
 		err := c.Bind(&createUser)
 

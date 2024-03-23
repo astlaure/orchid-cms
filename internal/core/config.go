@@ -20,7 +20,7 @@ func GetDebugConfig() bool {
 
 func GetRenderer() *Template {
 	return &Template{
-		templates: template.Must(template.ParseGlob("resources/views/*.html")),
+		templates: template.Must(template.ParseGlob("resources/views/**/*.html")),
 	}
 }
 

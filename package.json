@@ -5,7 +5,9 @@
     "build": "vite build"
   },
   "devDependencies": {
+    "@tailwindcss/forms": "^0.5.7",
     "autoprefixer": "^10.4.19",
+    "htmx.org": "^1.9.11",
     "postcss": "^8.4.38",
     "tailwindcss": "^3.4.1",
     "vite": "^5.2.3"

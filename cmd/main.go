@@ -27,7 +27,7 @@ func main() {
 
 	core.ConnectToDatabase()
 
-	auth.RegisterGroup("/api/auth", app)
+	auth.RegisterGroup("", app)
 	users.RegisterGroup("/api/users", app)
 	admin.RegisterGroup("", app)
 

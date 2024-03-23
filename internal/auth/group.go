@@ -11,6 +11,10 @@ import (
 func RegisterGroup(prefix string, app *echo.Echo) {
 	var group = app.Group(prefix)
 
+	group.GET("/login", func(c echo.Context) error {
+		return c.Render(http.StatusOK, "login.html", echo.Map{})
+	})
+
 	group.POST("/login", func(c echo.Context) error {
 		var body Login
 		err := c.Bind(&body)

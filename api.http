@@ -27,3 +27,29 @@ Content-Type: application/json
 }
 
 ###
+
+PUT http://localhost:3000/api/users/1
+Content-Type: application/json
+
+{
+    "name": "Bob",
+    "email": "bob@builder.com",
+    "role": "USER_ROLE"
+}
+
+###
+
+POST http://localhost:3000/api/auth/login
+Content-Type: application/json
+
+{
+    "email": "bob@builder.com",
+    "password": "password"
+}
+
+###
+
+POST http://localhost:3000/api/auth/logout
+Content-Type: application/json
+
+###

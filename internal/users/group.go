@@ -9,7 +9,7 @@ import (
 )
 
 func RegisterGroup(prefix string, app *echo.Echo) {
-	var group = app.Group(prefix)
+	var group = app.Group(prefix, core.AuthGuard)
 
 	group.GET("/", func(c echo.Context) error {
 		pageNumber, err := strconv.ParseUint(c.QueryParam("page"), 10, 32)

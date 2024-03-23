@@ -9,3 +9,4 @@
 5. golang.org/x/crypto/bcrypt
 6. github.com/go-playground/validator/v10
 7. github.com/labstack/echo/v4/middleware
+8. github.com/labstack/echo-contrib/session

@@ -27,6 +27,17 @@ func retrieveUserById(id uint) (*User, error) {
 	return &user, nil
 }
 
+func retrieveUserByEmail(email string) (*User, error) {
+	var user User
+	result := core.DB.Where("email = ?", email).First(&user)
+
+	if result.Error != nil {
+		return nil, result.Error
+	}
+
+	return &user, nil
+}
+
 func insertUser(createUser CreateUser) (*User, error) {
 	hash, err := bcrypt.GenerateFromPassword([]byte(createUser.Password), 10)
 
